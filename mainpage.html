@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Новая вкладка</title>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="js/addtab.js"></script>
+    <script src="js/parallax.js"></script>
+    <script src="js/bg-changer.js"></script>
+    <script src="js/pages.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/g-services.js"></script>
+    <link href="styles.css" rel="stylesheet"></link>
+
+
+  <script>
+$(document).ready(function(){
+let minutes_text = '00';
+let hours_text = '00';
+const baz = () => {setTimeout(foo, 500);
+let today = new Date(); let minutes = today.getMinutes();
+let hours = today.getHours();
+if (minutes < 10) {minutes_text = "0" + minutes} else {minutes_text = minutes};
+if (hours < 10) {hours_text = "0" + hours} else {hours_text = hours};
+document.getElementById("clocks").innerText = hours_text + ":" + minutes_text;
+}
+
+  const foo = () => {
+  setTimeout(baz, 500);}
+  baz();
+
+  $(".link.plus p").each(function(){
+    if ($(this).text() == "+") $(this).css({'font-size': '4em', 'margin': '0'});
+  })
+});
+  </script>
+
+  </head>
+  <body>
+    <div id="overflow_container" class="flexed">
+    <div class="overflow_black"></div>
+      <div class="overflow flexed">
+        <h2><b>Добавить/Изменить вкладку</b></h2>
+        <div class="input url"><input id="url" type="text" placeholder="URL | ОБЯЗАТЕЛЬНО" autocomplete="off"/></div>
+       <div class="input name"><input id="name" type="text" placeholder="Название | ОБЯЗАТЕЛЬНО" autocomplete="off"/></div>
+        <div class="input pic"><input id="picture" type="text" placeholder="Ссылка на изображение | необязательно" autocomplete="off"/></div>
+        <div class="input" style="display: flex; justify-content: space-around; align-items: center;"><button id="addTab">Добавить закладку</button><button id="removeTab">Удалить закладку</button></div>
+      </div>
+    </div>
+    <div class="bg-container parallax__x-axis" data-bg-parallax="true" data-parallax-deep="100">
+    </div>
+    <div class="main-container flexed">
+      <p class="nickname parallax__x-axis" data-parallax-deep="-2000"">MORDEGAARD</p>
+      <div class="search flexed">
+        <div class="flexed searchButton"><img src="icons/search.svg" id="search-button"></div>
+        <input type="text" id="search" placeholder="Поиск в Google" autocomplete="off" tabindex="5">
+        <a href="https://www.google.com/imghp?sbi=1" class="flexed searchButton"><img src="icons/images-solid.svg"></a>
+        <div id="dropImg" class="flexed">
+          <img src="icons/images-solid.svg">
+          <p>Отпустите, чтобы найти изображение в Google</p>
+        </div>
+      </div>
+      <div class="lnk_container parallax__x-axis flexed" data-parallax-deep="1500"">
+        <div class="arrow left"><img src="icons/angle-light.svg"></div>
+
+        <div class="pages" style="display: flex; overflow:hidden;">
+        <div class="page flexed" id="page1"><div class="line flexed">
+            <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+            <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+            <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+            <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+            <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+        </div>
+        <div class="line flexed">
+            <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+            <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+            <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+            <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+            <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+        </div></div>
+
+
+        <div class="page flexed" id="page2"><div class="line flexed">
+            <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+            <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+            <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+            <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+            <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+        </div>
+        <div class="line flexed">
+          <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+          <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+          <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+          <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+          <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+        </div></div>
+
+
+<div class="page flexed" id="page3"><div class="line flexed">
+          <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+          <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+          <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+          <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+          <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+        </div>
+        <div class="line flexed">
+          <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+          <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+          <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+          <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+          <a class="flexed"><div class="link flexed plus"><p>+</p></div></a>
+        </div></div>
+        </div>
+        <div class="arrow right"><img src="icons/angle-light.svg"></div>
+        <div id="page-counter">1 / 3</div>
+      </div>
+    </div>
+    <div class="clocks parallax__x-axis flexed" data-parallax-deep="100">
+    <div class="clocks_in flexed"><p>TIME</p><div id="clocks">00:00</div></div></div>
+    <div class="bg-button-container parallax__x-axis flexed" data-parallax-deep="50">
+      <div class="bg-button">
+        <img src="icons/images-solid.svg">
+      </div>
+    </div>
+    <div class="g-services-button parallax__x-axis flexed" data-parallax-deep="50">
+      <div class="g-services-icon flexed">
+        <img src="icons/9-squares.svg" style="width: 70%;">
+      </div>
+    </div>
+    <div id="g-services-container" class="parallax__x-axis flexed" data-parallax-deep="60">
+      <div class="g-services flexed">
+        <div id="close-g-serivces">×</div>
+        <a href="https://translate.google.com/"><img src="icons/Google-translate-logo.svg"></a>
+        <a href="https://google.com/"><img src="icons/Google-logo.svg"></a>
+        <a href="https://youtube.com/"><img src="icons/youtube.svg"></a>
+        <a href="https://mail.google.com/"><img src="icons/gmail.svg"></a>
+        <a href="https://maps.google.com/"><img src="icons/Google-maps-logo.svg"></a>
+        <a href="https://drive.google.com/"><img src="icons/google-drive.svg"></a>
+        <a href="https://calendar.google.com/"><img src="icons/Google-calendar-logo.svg"></a>
+        <a href="https://music.youtube.com/"><img src="icons/youtube-music.svg"></a>
+        <a href="https://play.google.com/"><img src="icons/Google-play-logo.svg"></a>
+        <a href="https://docs.google.com/"><img src="icons/Google-docs-logo.svg"></a>
+        <a href="https://meet.google.com/"><img src="icons/Google-meet-logo.svg"></a>
+        <a href="https://classroom.google.com/"><img src="icons/Google-classroom-logo.svg"></a>
+      </div>
+    </div>
+  </body>
+</html>
