@@ -81,7 +81,7 @@ transform: scale(1.08);
 transition: 0.1s;
 }
 .link {flex-direction: column;}
-.link img {margin-top: -10px; max-width: 80px; height: 44px;}
+.link img {margin-top: -10px; max-width: 65px; height: 44px;}
 .link div img {margin: 0;}
 .link p {
 margin: 0;
