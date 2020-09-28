@@ -2,6 +2,12 @@ $(document).ready(function(){
   function updateNum() {
     document.getElementById("page-counter").innerText = (this_page+1) +  " / 3";
   }
+  
+  document.addEventListener('keydown',function(e){
+    if (e.key == "ArrowLeft") $(".arrow.left").click();
+    if (e.key == "ArrowRight") $(".arrow.right").click();
+  });
+
 
   this_page = 0;
   max_page = 2;
