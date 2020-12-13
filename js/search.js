@@ -32,13 +32,15 @@ $(document).ready(function(){
     }
   });
 
-  $(document).click(function() {
-    if ($("#search").is(":focus") ) {
-      $(".search").css({"backdrop-filter":"blur(5px)","box-shadow":"rgba(0, 0, 0, 0.5) 1px 1px 7px -3px"});
-    } else {
-      $(".search").css({"backdrop-filter":"","box-shadow":""});
-    }
-  });
+  var search = document.getElementsByClassName("search")[0]
+
+  document.onclick = function(){
+    search.classList.remove("focused");
+  }
+  search.onclick = function(e){
+    search.classList.add("focused");
+    e.stopPropagation();
+  }
 
   $("#search-button").click(function(){
     text = document.getElementById("search").value;
