@@ -81,7 +81,7 @@ transform: scale(1.08);
 transition: 0.1s;
 }
 .link {flex-direction: column;}
-.link img {margin-top: -10px; max-width: 65px; height: 44px;}
+.link img {margin-top: -10px; max-width: 54px; height: 44px;}
 .link div img {margin: 0;}
 .link p {
 margin: 0;
@@ -145,7 +145,7 @@ padding-right: 16px;
 width: 36px;
 }
 .bg-button:active {
-transform: rotateY(35deg) rotateX(3deg) scale(0.75);
+transform: rotateY(-35deg) rotateX(3deg) scale(0.9);
 }
 
 .g-services-icon {
@@ -179,6 +179,10 @@ border-left: 1px solid white;
 border-right: 1px solid white;
 transition: background 0.5s, border 0.5s, padding 0.5s;
 position: relative;
+}
+.search.focused {
+  backdrop-filter: blur(5px);
+  box-shadow: rgba(0, 0, 0, 0.5) 1px 1px 7px -3px;
 }
 .draggedFile .search {
   padding: 70px 0px;
@@ -231,11 +235,11 @@ height: 100%;
 left: 0;
 top: 0;
 z-index: 5;
-display: none;
+visibility: hidden;
 }
 
 #overflow_container.visible {
-  display: flex;
+  visibility: visible;
 }
 
 .overflow_black {
@@ -250,43 +254,61 @@ z-index: 0;
 
 #overflow_container .overflow {
 flex-direction: column;
-width: 876px;
+width: 776px;
 background: white;
 border-radius: 24px;
 font: 20px Arial, sans-serif;
 text-align: center;
-padding: 45px 20px;
+padding: 25px 10px;
+box-shadow: 3px 3px 18px -7px black;
+transform: scale(1.2);
+opacity: 0;
 z-index: 1;
+}
+
+#overflow_container.visible .overflow {
+  transition: all 0.25s;
+  transform: none;
+  opacity: 1;
 }
 
 .overflow .input {width: 65%; position: relative;}
 .overflow input {
 width: 100%;
 height: 28px;
-padding: 4px 10px;
+padding: 4px 10px 2px 10px;
 margin: 8px 0px;
-border: 2px solid #348bee;
-border-radius: 12px;
+border: none;
+border-bottom: 2px solid #348bee;
 position: relative;
 color: grey;
+font-size: 16px;
+}
+.overflow input::placeholder {
+  color: transparent;
 }
 .overflow input:focus {
+  color: #348bee;
   outline: none;
-  border-color: #002bac;
-  color: black;
 }
-
-.overflow .input:before {
-content: "";
-position: absolute;
-top: 50%;
-left: -20px;
-transform: translate(-100%, -50%);
-color: black;
+.overflow .input label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: grey;
+  font-size: 16px;
+  transform: translate(11px, 16px);
+  pointer-events: none;
+  transition: transform 0.25s;
 }
-.overflow .name:before {content: "*Название:"}
-.overflow .url:before {content: "*URL:"}
-.overflow .pic:before {content: "Иконка:"}
+.overflow input:focus + label {
+  color: #348bee;
+}
+.overflow input:not(:placeholder-shown) + label {
+  color: #348bee;
+  transform: none;
+  font-size: 12px;
+}
 
 .changeTab {
 position: absolute;
@@ -300,24 +322,30 @@ opacity: 0;
 }
 .link:hover .changeTab {opacity: 1;}
 
-.overflow #addTab, .overflow #removeTab {
+.overflow .btns {
+  width: 65%;
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.overflow .btns button {
+  box-shadow: 2px 2px 10px -6px black;
   border: none;
-  border: 2px solid;
   background: transparent;
-  padding: 4px 8px;
+  padding: 8px 14px;
   font-size: 1em;
-  border-radius: 12px;
+  border-radius: 666px;
 }
 
 .overflow #addTab {
   color: #348bee;
-  border-color: #348bee;
 }
 .overflow #addTab:hover {color: white; background: #348bee;}
 
 .overflow #removeTab {
-color: red;
-border-color: red;
+  color: red;
 }
 .overflow #removeTab:hover {color: white; background: red;}
 

@@ -40,10 +40,10 @@ document.getElementById("clocks").innerText = hours_text + ":" + minutes_text;
     <div class="overflow_black"></div>
       <div class="overflow flexed">
         <h2><b>Добавить/Изменить вкладку</b></h2>
-        <div class="input url"><input id="url" type="text" placeholder="URL | ОБЯЗАТЕЛЬНО" autocomplete="off"/></div>
-       <div class="input name"><input id="name" type="text" placeholder="Название | ОБЯЗАТЕЛЬНО" autocomplete="off"/></div>
-        <div class="input pic"><input id="picture" type="text" placeholder="Ссылка на изображение | необязательно" autocomplete="off"/></div>
-        <div class="input" style="display: flex; justify-content: space-around; align-items: center;"><button id="addTab">Добавить закладку</button><button id="removeTab">Удалить закладку</button></div>
+        <div class="input url"><input id="url" type="text" placeholder="URL*" autocomplete="off"/><label>URL*</label></div>
+       <div class="input name"><input id="name" type="text" placeholder="Название*" autocomplete="off"/><label>Название*</label></div>
+        <div class="input pic"><input id="picture" type="text" placeholder="Ссылка на изображение" autocomplete="off"/><label>Ссылка на изображение</label></div>
+        <div class="btns"><button id="addTab">Добавить закладку</button><button id="removeTab">Удалить закладку</button></div>
       </div>
     </div>
     <div class="bg-container parallax__x-axis" data-bg-parallax="true" data-parallax-deep="100">
