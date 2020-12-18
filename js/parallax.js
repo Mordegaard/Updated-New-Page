@@ -39,6 +39,6 @@ function Parallax(options){
     return this;
 }
 
-window.addEventListener('load', function(){
+$(document).ready(function(){
     new Parallax();
 });
