@@ -212,7 +212,7 @@ width: 8%;
 .search .searchButton img {
 height: 60%;
 padding: 6px;
-z-index: 5;
+z-index: 1;
 }
 .search .searchButton:before {
 content: "";
