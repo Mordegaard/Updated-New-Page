@@ -1,72 +1,75 @@
-$(document).ready(function(){
+window.addEventListener("load", function(){
+
   function updateTabs() {
     for (var i = 0; i < arr.length; i++) {
-      if (localStorage.getItem("url"+i) != undefined && localStorage.getItem("name"+i) != undefined) {
+      if (localStorage.getItem("url"+i) && localStorage.getItem("name"+i)) {
         arr[i].classList.add("added");
         var pic = localStorage.getItem("picture"+i);
         var name = localStorage.getItem("name"+i);
         var url = localStorage.getItem("url"+i);
-        if (pic == "") pic = "\u0022\u0022";
-        $(arr[i]).html('<img src=' + pic + '><p>' + name + '</p><div class="flexed changeTab"><img src="icons/pencil.svg" width="14"/></div>');
-        $(arr[i]).closest("a").attr("href", url);
+        arr[i].classList.remove("plus");
+        arr[i].innerHTML = '<img src=' + pic + '><p>' + name + '</p><div class="flexed changeTab"><img src="icons/pencil.svg" width="14"/></div>';
+        arr[i].closest("a").setAttribute("href", url);
+        arr[i].cl("changeTab")[0].addEventListener("click", function(e){
+          e.preventDefault();
+          overflow.classList.add("visible");
+          pressed = [].indexOf.call(arr, this.parentElement);
+          document.getElementById("name").value = localStorage.getItem("name"+pressed);
+          document.getElementById("url").value = localStorage.getItem("url"+pressed);
+          document.getElementById("picture").value = localStorage.getItem("picture"+pressed);
+          return false;
+        });
       }
     }
   return;
   }
 
   var pressed;
-  var arr = document.getElementsByClassName("plus");
-  var overflow = document.getElementById("overflow_container");
+  const arr = cl("link");
+  const overflow = id("overflow_container");
+  updateTabs();
 
-  $(".link.plus").click(function() {
-    if (!this.classList.contains("added"))
-    overflow.classList.add("visible");
-    for (var i = 0; i < arr.length; i++) if (this == arr[i]) pressed = i;
-    $(".overflow input").val("");
+  [].forEach.call(cl("plus"), function(bl, a){
+    bl.addEventListener("click", function(){
+      overflow.classList.add("visible");
+      pressed = [].indexOf.call(arr, this);
+      [].forEach.call(overflow.tag("input"), el => {el.value = ""});
+    });
   });
 
-  $(".overflow_black").click(function() {
+  id("overflow_black").addEventListener("click", function(){
     overflow.classList.remove("visible");
   });
 
-  $("#addTab").click(function(){
-    var name = document.getElementById("name").value;
-    var url = document.getElementById("url").value;
-    var picture = document.getElementById("picture").value;
+  id("addTab").addEventListener("click", function(){
+    var name = id("name").value;
+    var url = id("url").value;
+    var picture = id("picture").value;
     if (name != "" && url != "") {
-    localStorage.setItem("name" + pressed, name);
-    localStorage.setItem("url" + pressed, url);
-    localStorage.setItem("picture" + pressed, picture);
-    overflow.classList.remove("visible");
-    updateTabs();
+      localStorage.setItem("name" + pressed, name);
+      localStorage.setItem("url" + pressed, url);
+      localStorage.setItem("picture" + pressed, picture);
+      overflow.classList.remove("visible");
+      updateTabs();
     } else {
-      if (name == "") document.getElementById("name").classList.add("redLine");
-      if (url == "") document.getElementById("url").classList.add("redLine");
+      if (name == "") id("name").classList.add("redLine");
+      if (url == "") id("url").classList.add("redLine");
     }
   });
 
-  $("#removeTab").click(function(){
+  id("removeTab").addEventListener("click", function(){
     localStorage.removeItem("name" + pressed);
     localStorage.removeItem("url" + pressed);
     localStorage.removeItem("picture" + pressed);
-    arr[pressed].innerHTML = '<p style="font-size: 4em; margin: 0px;">+</p>';
-    arr[pressed].classList.remove("added");
+    arr[pressed].innerHTML = '<p>+</p>';
+    arr[pressed].setAttribute("class", "link flexed plus");
     arr[pressed].parentElement.removeAttribute("href");
     overflow.classList.remove("visible");
   });
 
-  $(document).on("click",".changeTab",function() {
-    overflow.classList.add("visible");
-    for (var i = 0; i < arr.length; i++) if ($(this).closest("link") == arr[i]) pressed = i;
-    document.getElementById("name").value = localStorage.getItem("name"+pressed);
-    document.getElementById("url").value = localStorage.getItem("url"+pressed);
-    document.getElementById("picture").value = localStorage.getItem("picture"+pressed);
-    return false;
+  [].forEach.call(overflow.tag("input"), el => {
+    el.addEventListener("click", function(){
+      this.classList.remove("redLine");
+    });
   });
-
-  $("input").click(function() {
-    this.classList.remove("redLine");
-  });
-
-  updateTabs();
 });

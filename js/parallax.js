@@ -12,9 +12,9 @@ function Parallax(options){
        for(var i = 0; i < parallaxWrappers.length; i++){
    (function(i){
     parallaxWrappers[i].addEventListener('mousemove', function(e){
-     //var rect = e.target.getBoundingClientRect();
-     var x = e.clientX /*- window.innerWidth*/,
-      y = e.clientY /*- window.innerHeight*/,
+     console.log(window.innerWidth)
+     var x = e.clientX-window.innerWidth / 2,
+      y = e.clientY-window.innerHeight / 2,
       layers = parallaxWrappers[i].querySelectorAll(self.nameSpaces.layers);
      for(var j = 0; j < layers.length; j++){
             (function(j){
@@ -26,10 +26,10 @@ function Parallax(options){
                   if(disallow && disallow === 'both') return;
 
                   if(bgParallax)
-                    layers[j].style.backgroundPosition = (itemX + 50) + '% ' + (itemY + 50) + '%';
+                    layers[j].style.transform = 'scale(1.2) translateX(' + (-itemX) + 'px) translateY(' + (-itemY) + 'px)';
                   else
                     layers[j].style.transform = 'translateX(' + itemX + '%) translateY(' + itemY + '%)';
-            })(j);  
+            })(j);
      }
     })
    })(i);
@@ -39,6 +39,6 @@ function Parallax(options){
     return this;
 }
 
-$(document).ready(function(){
+window.addEventListener("load", function(){
     new Parallax();
 });

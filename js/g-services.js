@@ -1,15 +1,13 @@
-$(document).ready(function(){
+window.addEventListener("load", function(){
 
-  $('.g-services-icon').click(function(){
-    $('#g-services-container').css('visibility','visible');
-    $('.g-services').css('max-height','350px');
-    $('.g-services-icon').css({'visibility':'hidden','opacity':'0'});
+  id("gServicesButton").addEventListener("click", function(){
+    id('gServicesContainer').changeVisible(true);
+    id("gServicesButton").changeVisible(false);
   });
 
-  $('#close-g-serivces').click(function(){
-    $('#g-services-container').css('visibility','');
-    $('.g-services').css('max-height','');
-    $('.g-services-icon').css({'visibility':'','opacity':''});
+  id('close-g-serivces').addEventListener("click", function(){
+    id('gServicesContainer').changeVisible(false);
+    id("gServicesButton").changeVisible(true);
   });
 
 });
